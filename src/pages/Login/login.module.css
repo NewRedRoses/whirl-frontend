@@ -1,0 +1,22 @@
+.login-page {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20%;
+  align-items: center;
+}
+.google-login-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1em;
+  border: 0.5px solid gray;
+  border-radius: 5px;
+  width: fit-content;
+  padding: 10px;
+}
+.google-login-btn svg {
+  width: 25px;
+  color: blue;
+}
