@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import App from "./App.jsx";
 import Login from "./pages/Login/Login.jsx";
+import AuthSuccess from "./pages/Auth/AuthSuccess.jsx";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/auth-success",
+    element: <AuthSuccess />,
   },
 ]);
 
