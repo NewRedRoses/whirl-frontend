@@ -5,10 +5,12 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import App from "./App.jsx";
 import Login from "./pages/Login/Login.jsx";
 import Profile from "./pages/Profile/Profile.jsx";
+import Navbar from "./components/Navbar/Navbar.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/login" element={<Login />} />
