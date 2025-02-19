@@ -1,28 +1,19 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router";
+
 import App from "./App.jsx";
 import Login from "./pages/Login/Login.jsx";
-import AuthSuccess from "./pages/Auth/AuthSuccess.jsx";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/auth-success",
-    element: <AuthSuccess />,
-  },
-]);
+import Profile from "./pages/Profile/Profile.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
+    </BrowserRouter>
   </StrictMode>,
 );
