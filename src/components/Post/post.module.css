@@ -1,0 +1,27 @@
+.post-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid black;
+  padding: 5px;
+}
+.post-body {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.post-content {
+  padding-top: px;
+  padding-bottom: 15px;
+}
+.post-userPfp {
+  border: 1px solid black;
+}
+.btns {
+  display: flex;
+  gap: 10px;
+}
+.btns button {
+  border: 0.5px solid black;
+  background-color: transparent;
+}
