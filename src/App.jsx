@@ -7,7 +7,7 @@ const cachedList = ["username", "pfpUrl"];
 function App() {
   const [posts, setPosts] = useState([]);
 
-  const userUrl = `${import.meta.env.VITE_BACKEND_URL}/user`;
+  const userUrl = `${import.meta.env.VITE_BACKEND_URL}/user/pfp`;
   const postsUrl = `${import.meta.env.VITE_BACKEND_URL}/posts`;
 
   useEffect(() => {
@@ -16,9 +16,7 @@ function App() {
       credentials: "include",
     })
       .then((response) => response.json())
-      .then((data) => {
-        cachedList.map((item) => localStorage.setItem(item, data[item]));
-      });
+      .then((data) => localStorage.setItem("pfpUrl", data.pfpUrl));
 
     // Fetch posts
     fetch(postsUrl, {
