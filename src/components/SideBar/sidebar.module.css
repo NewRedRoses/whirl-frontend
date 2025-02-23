@@ -1,0 +1,31 @@
+.links {
+  margin-top: 40px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 0;
+}
+.list-item {
+  display: flex;
+  justify-content: center;
+}
+.link {
+  display: flex;
+  width: 100px;
+  color: var(--light-color-alt);
+  gap: 5px;
+  justify-content: flex-start;
+  align-items: center;
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 10px;
+  padding-left: 20px;
+}
+.link:hover {
+  color: var(--light-color);
+}
+.active {
+  border: 1px solid var(--dark-color-alt);
+  border-radius: 5px;
+}
