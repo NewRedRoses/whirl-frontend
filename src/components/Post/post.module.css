@@ -1,9 +1,39 @@
 .post-container {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 10px;
-  border: 1px solid black;
-  padding: 5px;
+  border: 1px solid var(--dark-color-alt);
+  border-radius: 5px;
+  max-width: 500px;
+  padding: 20px;
+}
+.post-header {
+  display: flex;
+  gap: 10px;
+}
+.post-header-left {
+  display: flex;
+  justify-content: center;
+}
+.post-userPfp {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  /*border: 0.5px solid black;*/
+  border-radius: 50%;
+  object-fit: cover;
+}
+.post-header-mid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2.5px;
+}
+.post-author {
+  font-size: 1.1rem;
+}
+.post-date {
+  color: var(--light-color-alt);
 }
 .post-body {
   display: flex;
@@ -11,17 +41,32 @@
   gap: 5px;
 }
 .post-content {
-  padding-top: px;
+  padding-top: 15px;
   padding-bottom: 15px;
+  font-size: 1.5rem;
+  font-weight: 510;
 }
-.post-userPfp {
-  border: 1px solid black;
-}
-.btns {
+.post-btns {
   display: flex;
   gap: 10px;
+  justify-content: center;
 }
-.btns button {
-  border: 0.5px solid black;
+.post-btns button {
+  border: none;
+  color: var(--light-color-alt);
   background-color: transparent;
+}
+.post-btns button:hover {
+  cursor: pointer;
+  color: var(--light-color);
+}
+.post-header-right {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  color: var(--light-color-alt);
+}
+.post-header-right:hover {
+  cursor: pointer;
+  color: var(--light-color);
 }

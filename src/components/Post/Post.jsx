@@ -1,21 +1,33 @@
+import { EllipsisVertical, Heart, MessageSquare } from "lucide-react";
 import styles from "../Post/post.module.css";
 
 export default function Post({ author, content, date }) {
-  date = new Date(date);
   return (
     <div className={styles["post-container"]}>
-      <div>
-        <img src={author.pfpUrl} alt="" className={styles["post-userPfp"]} />
+      <div className={styles["post-header"]}>
+        <div className={styles["post-header-left"]}>
+          <img src={author.pfpUrl} alt="" className={styles["post-userPfp"]} />
+        </div>
+        <div className={styles["post-header-mid"]}>
+          <strong className={styles["post-author"]}>
+            {author.displayName}
+          </strong>
+          <div className={styles["post-date"]}>{date} ago</div>
+        </div>
+        <div className={styles["post-header-right"]}>
+          <EllipsisVertical />
+        </div>
       </div>
       <div className={styles["post-body"]}>
-        <div>
-          <strong>{author.displayName} </strong>
-        </div>
         <div className={styles["post-content"]}>{content}</div>
-        <div className={styles.btns}>
-          <button>Like</button>
-          <button>Comment</button>
-        </div>
+      </div>
+      <div className={styles["post-btns"]}>
+        <button>
+          <Heart />
+        </button>
+        <button>
+          <MessageSquare />
+        </button>
       </div>
     </div>
   );

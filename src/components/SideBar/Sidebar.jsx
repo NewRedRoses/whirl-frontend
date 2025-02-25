@@ -11,7 +11,7 @@ export default function Sidebar() {
     { name: "Users", url: "/users", icon: <Users /> },
   ];
   return (
-    <>
+    <div className="sidebar-content">
       <ul className={styles.links}>
         {list.map((link, index) => (
           <li key={index} className={styles["list-item"]}>
@@ -29,6 +29,6 @@ export default function Sidebar() {
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }
