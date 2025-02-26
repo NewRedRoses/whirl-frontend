@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import useCheckSession from "../../hooks/useCheckSession.jsx";
 import { validatedGetReq } from "../../helpers";
 
 import { UsersRound, CalendarFold } from "lucide-react";
@@ -14,6 +15,7 @@ export default function Profile() {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [pfp, setPfp] = useState(null);
+  useCheckSession();
 
   const userUrl = `${import.meta.env.VITE_BACKEND_URL}/user`;
   const userPostsUrl = `${import.meta.env.VITE_BACKEND_URL}/posts/${user.username}`;

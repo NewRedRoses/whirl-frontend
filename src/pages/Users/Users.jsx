@@ -1,6 +1,8 @@
 import Sidebar from "../../components/SideBar/Sidebar.jsx";
+import useCheckSession from "../../hooks/useCheckSession.jsx";
 
 export default function Users() {
+  useCheckSession();
   return (
     <div className="content">
       <Sidebar />
