@@ -1,0 +1,7 @@
+ul.posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  list-style-type: none; /* Remove bullets */
+  padding: 0;
+}

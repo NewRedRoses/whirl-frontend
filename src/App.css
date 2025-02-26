@@ -51,10 +51,6 @@ textarea {
   background-color: transparent;
   border: 0.5px solid var(--light-color-alt);
 }
-ul.posts-list {
-  list-style-type: none; /* Remove bullets */
-  padding: 0;
-}
 
 .main-content {
   flex: 3;
