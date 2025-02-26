@@ -1,34 +1,23 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import useCheckSession from "./hooks/useCheckSession.jsx";
 
 import Sidebar from "./components/SideBar/Sidebar.jsx";
 import PostComposer from "./components/PostComposer/PostComposer.jsx";
+import Posts from "./components/Posts/Posts.jsx";
+
+import { validatedGetReq } from "./helpers.js";
 
 import "./App.css";
-import Posts from "./components/Posts/Posts.jsx";
 
 function App() {
   const [posts, setPosts] = useState([]);
+  useCheckSession();
 
   const postsUrl = `${import.meta.env.VITE_BACKEND_URL}/posts`;
-  const checkSessionUrl = `${import.meta.env.VITE_BACKEND_URL}/auth/check-session`;
-
-  const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(checkSessionUrl, {
-      credentials: "include",
-    }).then((response) => {
-      if (response.status != 200) {
-        localStorage.removeItem("pfpUrl");
-        navigate("/login");
-      }
-    });
-
     // Fetch posts
-    fetch(postsUrl, {
-      credentials: "include",
-    })
+    validatedGetReq(postsUrl)
       .then((response) => response.json())
       .then((data) => setPosts(data));
   }, [postsUrl]);

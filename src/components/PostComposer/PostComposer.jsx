@@ -1,20 +1,15 @@
 import { useState } from "react";
 import styles from "./postcomposer.module.css";
 
+import { validatedGetReq, validatedPostReq } from "../../helpers";
+
 export default function PostComposer() {
   const [post, setPost] = useState("");
 
   const postUrl = `${import.meta.env.VITE_BACKEND_URL}/post`;
 
   async function handleSubmit() {
-    await fetch(postUrl, {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: new URLSearchParams({ post }),
-    });
+    validatedPostReq(postUrl, post);
   }
 
   return (

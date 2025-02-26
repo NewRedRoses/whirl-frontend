@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { validatedGetReq } from "../../helpers";
+
 import { UsersRound, CalendarFold } from "lucide-react";
 import FadeLoader from "react-spinners/FadeLoader";
 import styles from "./profile.module.css";
@@ -20,23 +22,17 @@ export default function Profile() {
 
   useEffect(() => {
     // User
-    fetch(userUrl, {
-      credentials: "include",
-    })
+    validatedGetReq(userUrl)
       .then((response) => response.json())
       .then((data) => setUser(data));
 
     // User pfp
-    fetch(pfpUrl, {
-      credentials: "include",
-    })
+    validatedGetReq(pfpUrl)
       .then((response) => response.json())
       .then((data) => setPfp(data.pfpUrl));
 
     // User Posts
-    fetch(userPostsUrl, {
-      credentials: "include",
-    })
+    validatedGetReq(userPostsUrl)
       .then((response) => response.json())
       .then((data) => setPosts(data));
 
