@@ -17,7 +17,7 @@ export default function Profile() {
   const [pfp, setPfp] = useState(null);
   useCheckSession();
 
-  const userUrl = `${import.meta.env.VITE_BACKEND_URL}/user`;
+  const userUrl = `${import.meta.env.VITE_BACKEND_URL}/user/profile`;
   const userPostsUrl = `${import.meta.env.VITE_BACKEND_URL}/posts/${user.username}`;
   const pfpUrl = `${import.meta.env.VITE_BACKEND_URL}/user/pfp`;
   const dateJoined = new Date(user.user.dateJoined);
