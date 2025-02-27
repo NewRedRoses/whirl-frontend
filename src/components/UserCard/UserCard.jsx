@@ -15,8 +15,8 @@ export default function UserCard({
             <strong>{displayName}</strong>
           </div>
           <div className={styles["bottom-details"]}>
-            <span>@{username}</span>
-            <span>{friendsCount} friends</span>
+            <span>{`@${username}`}</span>
+            <span>{`${friendsCount} friends`}</span>
           </div>
         </div>
       </div>

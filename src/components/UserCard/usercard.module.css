@@ -9,14 +9,15 @@
 }
 .user-pfp {
   display: inline-block;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   object-fit: cover;
   /*border: 1px solid var(--dark-color-alt);*/
 }
 .user-card-left {
   display: flex;
+  gap: 10px;
 }
 .user-card-mid {
   display: flex;
