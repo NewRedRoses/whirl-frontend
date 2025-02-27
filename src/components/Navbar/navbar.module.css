@@ -12,3 +12,25 @@
   border-radius: 50%;
   object-fit: cover;
 }
+.right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logout-btn {
+  height: fit-content;
+  background-color: transparent;
+  color: var(--light-color-alt);
+  border: 1px solid var(--dark-color-alt);
+  border-radius: 5px;
+  padding: 5px 10px;
+  position: relative;
+}
+.logout-btn:hover {
+  cursor: pointer;
+  background-color: var(--dark-color-alt);
+  color: var(--light-color);
+}
+.logout-btn:active {
+  top: 1px;
+}

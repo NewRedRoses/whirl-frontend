@@ -1,20 +1,29 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { House } from "lucide-react";
 import { useState, useEffect } from "react";
 
-import { validatedGetReq } from "../../helpers";
+import { validatedGetReq, validatedPostReq } from "../../helpers";
 import styles from "./navbar.module.css";
 
 export default function Navbar() {
   const [pfp, setPfp] = useState(null);
 
   const userUrl = `${import.meta.env.VITE_BACKEND_URL}/user/pfp`;
+  const logoutUrl = `${import.meta.env.VITE_BACKEND_URL}/auth/google/logout`;
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     validatedGetReq(userUrl)
       .then((response) => response.json())
       .then((data) => setPfp(data.pfpUrl));
   }, [userUrl]);
+
+  const handleLogout = () => {
+    validatedPostReq(logoutUrl);
+    setPfp(null);
+    navigate("/login");
+  };
 
   return (
     <>
@@ -28,6 +37,9 @@ export default function Navbar() {
 
           {pfp && (
             <div className={styles.right}>
+              <button className={styles["logout-btn"]} onClick={handleLogout}>
+                Logout
+              </button>
               <Link to="/profile">
                 <img src={pfp} alt="" className={styles["navbar-pfp"]} />
               </Link>
