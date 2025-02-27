@@ -4,7 +4,7 @@ const validatedGetReq = async (url) => {
   });
 };
 
-const validatedPostReq = async (url, content) => {
+const validatedPostReq = async (url, content = "") => {
   return await fetch(url, {
     method: "POST",
     credentials: "include",
