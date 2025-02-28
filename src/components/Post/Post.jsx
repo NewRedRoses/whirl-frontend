@@ -2,12 +2,16 @@ import { useState } from "react";
 import { EllipsisVertical, Heart, MessageSquare } from "lucide-react";
 
 import styles from "../Post/post.module.css";
+import { validatedPostReq } from "../../helpers";
 
-export default function Post({ author, content, date }) {
+export default function Post({ postId, author, content, date }) {
   const [postLiked, setPostLiked] = useState(false);
 
-  function handleLike() {
+  const postLikeUrl = `${import.meta.env.VITE_BACKEND_URL}/post/id/${postId}/like`;
+
+  async function handleLike() {
     setPostLiked(!postLiked);
+    validatedPostReq(postLikeUrl);
   }
 
   return (

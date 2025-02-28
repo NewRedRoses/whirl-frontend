@@ -12,6 +12,7 @@ export default function Posts({ posts }) {
         return (
           <li key={post.id}>
             <Post
+              postId={post.id}
               content={post.content}
               date={formatDistance(post.datePosted, today)}
               likesCount={post.likesNum}
