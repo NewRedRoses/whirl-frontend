@@ -3,10 +3,18 @@
   --dark-color-alt: #2f3a42;
   --light-color: #d2dae2;
   --light-color-alt: #808e9b;
+  font-family: Inter, sans-serif;
+  font-feature-settings:
+    "liga" 1,
+    "calt" 1; /* fix for Chrome */
+}
+@supports (font-variation-settings: normal) {
+  :root {
+    font-family: InterVariable, sans-serif;
+  }
 }
 body {
   height: 100vh;
-  font-family: "Helvetica";
   background-color: var(--dark-color);
   color: var(--light-color);
 }
