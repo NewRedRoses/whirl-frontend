@@ -1,16 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { EllipsisVertical, Heart, MessageSquare } from "lucide-react";
 
 import styles from "../Post/post.module.css";
-import { validatedPostReq } from "../../helpers";
+import { validatedGetReq, validatedPostReq } from "../../helpers";
 
-export default function Post({ postId, author, content, date }) {
-  const [postLiked, setPostLiked] = useState(false);
+export default function Post({ postId, author, content, date, likesCount }) {
+  const [isPostLiked, setIsPostLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(likesCount);
 
   const postLikeUrl = `${import.meta.env.VITE_BACKEND_URL}/post/id/${postId}/like`;
 
+  useEffect(() => {
+    // Get from backend whether user has liked post
+    validatedGetReq(postLikeUrl)
+      .then((response) => response.json())
+      .then((postLikeStatus) => {
+        if (postLikeStatus.success) {
+          setIsPostLiked(true);
+        }
+      });
+  }, [postLikeUrl]);
+
   async function handleLike() {
-    setPostLiked(!postLiked);
+    if (isPostLiked) {
+      if (likeCount > 0) {
+        setLikeCount(likeCount - 1);
+      }
+      setIsPostLiked(false);
+    } else {
+      setIsPostLiked(true);
+      setLikeCount(likeCount + 1);
+    }
     validatedPostReq(postLikeUrl);
   }
 
@@ -35,7 +55,18 @@ export default function Post({ postId, author, content, date }) {
       </div>
       <div className={styles["post-btns"]}>
         <button onClick={handleLike}>
-          {postLiked ? <Heart color="#ef5777" /> : <Heart />}
+          <div className={styles["likes-container"]}>
+            {isPostLiked ? (
+              <div className={styles["liked-post-container"]}>
+                <Heart color="#ef5777" />
+                {likeCount}
+              </div>
+            ) : (
+              <>
+                <Heart />
+              </>
+            )}
+          </div>
         </button>
         <button>
           <MessageSquare />
