@@ -3,8 +3,15 @@ import { EllipsisVertical, Heart, MessageSquare } from "lucide-react";
 
 import styles from "../Post/post.module.css";
 import { validatedGetReq, validatedPostReq } from "../../helpers";
+import { Link } from "react-router";
 
-export default function Post({ postId, author, content, date, likesCount }) {
+export default function Post({
+  postId,
+  author,
+  content,
+  date,
+  likesCount = 0,
+}) {
   const [isPostLiked, setIsPostLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(likesCount);
 
@@ -44,7 +51,9 @@ export default function Post({ postId, author, content, date, likesCount }) {
           <strong className={styles["post-author"]}>
             {author.displayName}
           </strong>
-          <div className={styles["post-date"]}>{date} ago</div>
+          <div className={styles["post-date"]}>
+            <Link to={`/post/${postId}`}>{date} ago</Link>
+          </div>
         </div>
         <div className={styles["post-header-right"]}>
           <EllipsisVertical />

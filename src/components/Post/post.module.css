@@ -76,3 +76,10 @@
   gap: 5px;
   font-size: 1rem;
 }
+.post-container a {
+  color: var(--light-color-alt);
+  text-decoration: none;
+}
+.post-container a:hover {
+  color: var(--light-color);
+}
