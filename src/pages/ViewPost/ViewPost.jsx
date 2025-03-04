@@ -66,9 +66,11 @@ export default function ViewPost() {
             />
             <h2>Comments</h2>
             <ul className="comments-list">
-              {comments.map((comment, index) => (
-                <Comment key={index} props={comment} />
-              ))}
+              {comments.length > 0 &&
+                comments.map((comment, index) => (
+                  <Comment key={index} props={comment} />
+                ))}
+              {}
             </ul>
           </>
         )}
