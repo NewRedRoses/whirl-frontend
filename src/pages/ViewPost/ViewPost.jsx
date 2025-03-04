@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { formatDistance } from "date-fns";
 import useCheckSession from "../../hooks/useCheckSession.jsx";
 import Comment from "../../components/Comment/Comment.jsx";
+import CommentComposer from "../../components/CommentComposer/CommentComposer.jsx";
 
 import { validatedGetReq } from "../../helpers.js";
 
@@ -38,7 +39,6 @@ export default function ViewPost() {
     validatedGetReq(commentsUrl)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setComments(data);
       });
 
@@ -65,6 +65,8 @@ export default function ViewPost() {
               }}
             />
             <h2>Comments</h2>
+            <CommentComposer url={commentsUrl} />
+
             <ul className="comments-list">
               {comments.length > 0 &&
                 comments.map((comment, index) => (
