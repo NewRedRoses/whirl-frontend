@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { formatDistance } from "date-fns";
 import useCheckSession from "../../hooks/useCheckSession.jsx";
+import Comment from "../../components/Comment/Comment.jsx";
 
 import { validatedGetReq } from "../../helpers.js";
 
@@ -16,13 +17,14 @@ const samplePost = {
 
 export default function ViewPost() {
   const [post, setPost] = useState(samplePost);
+  const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useCheckSession();
 
   const params = useParams();
 
-  const commentsUrl = `${import.meta.env.VITE_BACKEND_URL}/comment/${params.postId}`;
+  const commentsUrl = `${import.meta.env.VITE_BACKEND_URL}/post/id/${params.postId}/comments`;
   const postUrl = `${import.meta.env.VITE_BACKEND_URL}/post/id/${params.postId}`;
 
   useEffect(() => {
@@ -32,6 +34,14 @@ export default function ViewPost() {
       .then((data) => {
         setPost(data);
       });
+
+    validatedGetReq(commentsUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setComments(data);
+      });
+
     setIsLoading(false);
   }, [postUrl]);
 
@@ -43,25 +53,26 @@ export default function ViewPost() {
         {isLoading ? (
           "Loading...."
         ) : (
-          <Post
-            postId={post.id}
-            content={post.content}
-            likesCount={post.likesNum}
-            date={formatDistance(post.datePosted, new Date())}
-            author={{
-              displayName: post.user.profile.displayName,
-              pfpUrl: post.user.profile.pfpUrl,
-            }}
-          />
+          <>
+            <Post
+              postId={post.id}
+              content={post.content}
+              likesCount={post.likesNum}
+              date={formatDistance(post.datePosted, new Date())}
+              author={{
+                displayName: post.user.profile.displayName,
+                pfpUrl: post.user.profile.pfpUrl,
+              }}
+            />
+            <h2>Comments</h2>
+            <ul className="comments-list">
+              {comments.map((comment, index) => (
+                <Comment key={index} props={comment} />
+              ))}
+            </ul>
+          </>
         )}
       </div>
     </div>
   );
 }
-// <Post
-//           postId={post.id}
-//           author={post.user.profile}
-//           content={post.content}
-//           likesCount={post.likesNum}
-//         />
-//

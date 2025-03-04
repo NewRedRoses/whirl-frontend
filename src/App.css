@@ -43,7 +43,6 @@ a:hover {
   margin: 10px;
 }
 textarea {
-  font-family: "helvetica";
   font-size: 1.3rem;
   font-weight: bold;
 }
@@ -66,4 +65,11 @@ textarea {
 }
 .sidebar-content {
   flex: 1;
+}
+.comments-list {
+  display: flex;
+  padding-left: 0;
+  padding-right: 40px;
+  flex-direction: column;
+  gap: 20px;
 }

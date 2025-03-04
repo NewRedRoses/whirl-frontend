@@ -1,0 +1,37 @@
+.comment-container {
+  display: flex;
+  border: 1px solid var(--dark-color-alt);
+  padding: 20px;
+  gap: 10px;
+}
+.user-pfp img {
+  border: 1px solid var(--dark-color-alt);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: inline-block;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.right-content {
+  width: 100%;
+}
+.user-display-name {
+  font-size: 1.1rem;
+}
+.comment-content {
+  margin-top: 10px;
+
+  color: var(---light-color-alt);
+  width: fit-content;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.date-posted {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  color: var(--light-color-alt);
+  font-size: 0.9rem;
+}
