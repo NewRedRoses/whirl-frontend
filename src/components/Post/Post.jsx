@@ -11,6 +11,7 @@ export default function Post({
   content,
   date,
   likesCount = 0,
+  commentsCount = 0,
 }) {
   const [isPostLiked, setIsPostLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(likesCount);
@@ -54,6 +55,7 @@ export default function Post({
           <div className={styles["post-date"]}>
             <Link to={`/post/${postId}`}>{date} ago</Link>
           </div>
+          {console.log(commentsCount)}
         </div>
         <div className={styles["post-header-right"]}>
           <EllipsisVertical />
@@ -77,9 +79,17 @@ export default function Post({
             )}
           </div>
         </button>
-        <button>
-          <MessageSquare />
-        </button>
+        <Link to={`/post/${postId}`}>
+          <button>
+            {commentsCount > 0 ? (
+              <div className={styles["liked-post-container"]}>
+                <MessageSquare /> {commentsCount}
+              </div>
+            ) : (
+              <MessageSquare />
+            )}
+          </button>
+        </Link>
       </div>
     </div>
   );

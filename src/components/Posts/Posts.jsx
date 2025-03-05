@@ -16,6 +16,7 @@ export default function Posts({ posts }) {
               content={post.content}
               date={formatDistance(post.datePosted, today)}
               likesCount={post.likesNum}
+              commentsCount={post["_count"].postComment}
               author={{
                 displayName: post.user.profile.displayName,
                 pfpUrl: post.user.profile.pfpUrl,

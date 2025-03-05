@@ -11,6 +11,9 @@ import { validatedGetReq } from "../../helpers.js";
 
 const samplePost = {
   datePosted: new Date(),
+  _count: {
+    postComment: 0,
+  },
   user: {
     profile: {},
   },
@@ -59,6 +62,7 @@ export default function ViewPost() {
               content={post.content}
               likesCount={post.likesNum}
               date={formatDistance(post.datePosted, new Date())}
+              commentsCount={post["_count"].postComment}
               author={{
                 displayName: post.user.profile.displayName,
                 pfpUrl: post.user.profile.pfpUrl,
