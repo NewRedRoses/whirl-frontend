@@ -15,7 +15,7 @@ export default function CommentComposer({ url }) {
       <div className={styles["comment-composer-container"]}>
         <textarea
           name="comment"
-          placeholder="What're you thinking about?"
+          placeholder="What're your thoughts about this post?"
           id=""
           className={styles["comment-composer"]}
           value={comment}
