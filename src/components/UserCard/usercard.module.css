@@ -4,7 +4,7 @@
   border: 1px solid var(--dark-color-alt);
   padding: 10px;
   gap: 15px;
-  max-width: 350px;
+  margin-right: 40px;
   border-radius: 10px;
 }
 .user-pfp {
@@ -31,6 +31,7 @@
 .bottom-details {
   display: flex;
   gap: 10px;
+  color: var(--light-color-alt);
 }
 .user-card-right {
   display: flex;
