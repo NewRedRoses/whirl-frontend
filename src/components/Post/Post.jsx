@@ -55,7 +55,6 @@ export default function Post({
           <div className={styles["post-date"]}>
             <Link to={`/post/${postId}`}>{date} ago</Link>
           </div>
-          {console.log(commentsCount)}
         </div>
         <div className={styles["post-header-right"]}>
           <EllipsisVertical />

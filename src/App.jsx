@@ -5,11 +5,12 @@ import Sidebar from "./components/SideBar/Sidebar.jsx";
 import PostComposer from "./components/PostComposer/PostComposer.jsx";
 import Posts from "./components/Posts/Posts.jsx";
 
-import { validatedGetReq } from "./helpers.js";
+import { validatedGetReq, validatedPostReq } from "./helpers.js";
 
 import "./App.css";
 
 function App() {
+  const [post, setPost] = useState("");
   const [posts, setPosts] = useState([]);
   useCheckSession();
 
@@ -22,6 +23,9 @@ function App() {
       .then((data) => setPosts(data));
   }, [postsUrl]);
 
+  const handlePostChange = (e) => setPost(e.target.value);
+
+  const handlePostSubmit = (e) => validatedPostReq(postsUrl, post);
   return (
     <div className="content">
       <Sidebar />
@@ -29,7 +33,11 @@ function App() {
       <div className="main-content">
         <div>
           <h1>Posts</h1>
-          <PostComposer />
+          <PostComposer
+            post={post}
+            onPostChange={handlePostChange}
+            onPostSubmit={handlePostSubmit}
+          />
         </div>
         <div>
           <h2>Recent Posts</h2>
