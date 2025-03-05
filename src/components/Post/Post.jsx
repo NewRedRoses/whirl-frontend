@@ -69,7 +69,7 @@ export default function Post({
             {isPostLiked ? (
               <div className={styles["liked-post-container"]}>
                 <Heart color="#ef5777" />
-                {likeCount}
+                {likesCount}
               </div>
             ) : (
               <>
