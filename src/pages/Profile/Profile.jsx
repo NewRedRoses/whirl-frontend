@@ -10,7 +10,9 @@ import Posts from "../../components/Posts/Posts.jsx";
 
 export default function Profile() {
   const [user, setUser] = useState({
-    user: {},
+    user: {
+      _count: {},
+    },
   });
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -67,7 +69,7 @@ export default function Profile() {
                 <div className={styles["profile-details"]}>
                   <div className={styles.friends}>
                     <UsersRound />
-                    {user.friendsCount}
+                    {user.user["_count"].friendOf}
                   </div>
                   <div className={styles.date}>
                     <CalendarFold />
