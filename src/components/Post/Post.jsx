@@ -14,7 +14,9 @@ export default function Post({
   commentsCount = 0,
 }) {
   const [isPostLiked, setIsPostLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(likesCount);
+  const [likesCounter, setLikesCounter] = useState(likesCount);
+  console.log(likesCount); // 2
+  console.log(likesCounter); // 0
 
   const postLikeUrl = `${import.meta.env.VITE_BACKEND_URL}/post/id/${postId}/like`;
 
@@ -27,17 +29,18 @@ export default function Post({
           setIsPostLiked(true);
         }
       });
-  }, [postLikeUrl]);
+    setLikesCounter(likesCount);
+  }, [postLikeUrl, likesCount]);
 
   async function handleLike() {
     if (isPostLiked) {
-      if (likeCount > 0) {
-        setLikeCount(likeCount - 1);
+      if (likesCounter > 0) {
+        setLikesCounter(likesCounter - 1);
       }
       setIsPostLiked(false);
     } else {
       setIsPostLiked(true);
-      setLikeCount(likeCount + 1);
+      setLikesCounter(likesCounter + 1);
     }
     validatedPostReq(postLikeUrl);
   }
@@ -65,18 +68,10 @@ export default function Post({
       </div>
       <div className={styles["post-btns"]}>
         <button onClick={handleLike}>
-          <div className={styles["likes-container"]}>
-            {isPostLiked ? (
-              <div className={styles["liked-post-container"]}>
-                <Heart color="#ef5777" />
-                {likesCount}
-              </div>
-            ) : (
-              <>
-                <Heart />
-              </>
-            )}
-          </div>
+          <div className={styles["liked-post-container"]}>
+            {isPostLiked ? <Heart color="#ef5777" /> : <Heart />}
+            {likesCounter}
+          </div>{" "}
         </button>
         <Link to={`/post/${postId}`}>
           <button>
