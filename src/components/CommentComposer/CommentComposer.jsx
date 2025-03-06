@@ -2,12 +2,16 @@ import { useState } from "react";
 import styles from "./commentComposer.module.css";
 
 import { validatedPostReq } from "../../helpers";
+import { useNavigate } from "react-router";
 
 export default function CommentComposer({ url }) {
   const [comment, setComment] = useState("");
 
+  const navigate = useNavigate();
+
   async function handleSubmit() {
     validatedPostReq(url, comment);
+    navigate(0);
   }
 
   return (
