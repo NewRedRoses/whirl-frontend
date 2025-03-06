@@ -60,7 +60,7 @@ export default function ViewPost() {
             <Post
               postId={post.id}
               content={post.content}
-              likesCount={post.likesNum}
+              likesCount={post["_count"].postLike}
               date={formatDistance(post.datePosted, new Date())}
               commentsCount={post["_count"].postComment}
               author={{

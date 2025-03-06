@@ -15,8 +15,6 @@ export default function Post({
 }) {
   const [isPostLiked, setIsPostLiked] = useState(false);
   const [likesCounter, setLikesCounter] = useState(likesCount);
-  console.log(likesCount); // 2
-  console.log(likesCounter); // 0
 
   const postLikeUrl = `${import.meta.env.VITE_BACKEND_URL}/post/id/${postId}/like`;
 
