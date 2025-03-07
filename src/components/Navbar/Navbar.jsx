@@ -7,6 +7,7 @@ import styles from "./navbar.module.css";
 
 export default function Navbar() {
   const [pfp, setPfp] = useState(null);
+  const [username, setUsername] = useState("");
 
   const userUrl = `${import.meta.env.VITE_BACKEND_URL}/user/pfp`;
   const logoutUrl = `${import.meta.env.VITE_BACKEND_URL}/auth/google/logout`;
@@ -16,7 +17,10 @@ export default function Navbar() {
   useEffect(() => {
     validatedGetReq(userUrl)
       .then((response) => response.json())
-      .then((data) => setPfp(data.pfpUrl));
+      .then((data) => {
+        setPfp(data.pfpUrl);
+        setUsername(data.user.username);
+      });
   }, [userUrl]);
 
   const handleLogout = () => {
@@ -40,7 +44,7 @@ export default function Navbar() {
               <button className={styles["logout-btn"]} onClick={handleLogout}>
                 Logout
               </button>
-              <Link to="/profile">
+              <Link to={`/user/${username}`}>
                 <img src={pfp} alt="" className={styles["navbar-pfp"]} />
               </Link>
             </div>
