@@ -1,11 +1,24 @@
 import styles from "./usercard.module.css";
 import { UserPlus } from "lucide-react";
+import { useState } from "react";
+import { validatedPostReq } from "../../helpers.js";
+
 export default function UserCard({
   username = "",
   displayName,
   pfpUrl,
   friendsCount,
+  followerCount,
+  followingCount,
 }) {
+  const [isFriendReqSent, setIsFriendReqSent] = useState(false);
+  const url = `${import.meta.env.VITE_BACKEND_URL}/friend/add`;
+
+  const handleFriendRequest = () => {
+    validatedPostReq(url, username);
+    setIsFriendReqSent(true);
+  };
+
   return (
     <div className={styles["user-card-container"]}>
       <div className={styles["user-card-left"]}>
@@ -16,18 +29,21 @@ export default function UserCard({
           </div>
           <div className={styles["bottom-details"]}>
             <span>{`@${username}`}</span>
-            <span>{`${friendsCount} friends`}</span>
+            <span>{`${followerCount} Followers`}</span>
+            <span>{`${followingCount} Following`}</span>
           </div>
         </div>
       </div>
-      <div className={styles["user-card-right"]}>
-        <button
-          className={styles["add-btn"]}
-          onClick={() => console.log("test")}
-        >
-          <UserPlus />
-        </button>
-      </div>
+      {/* NOTE: Switched to be implemented in the future */}
+      {/* <div className={styles["user-card-right"]}> */}
+      {/*   {isFriendReqSent == false ? ( */}
+      {/*     <button className={styles["add-btn"]} onClick={handleFriendRequest}> */}
+      {/*       <UserPlus /> */}
+      {/*     </button> */}
+      {/*   ) : ( */}
+      {/*     "" */}
+      {/*   )} */}
+      {/* </div> */}
     </div>
   );
 }
