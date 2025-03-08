@@ -30,7 +30,8 @@ export default function Users() {
                   username={user.user.username}
                   displayName={user.displayName}
                   pfpUrl={user.pfpUrl}
-                  friendsCount={user.user["_count"].friendOf}
+                  followingCount={user.user["_count"].friendsA}
+                  followerCount={user.user["_count"].friendsB}
                 />
               </li>
             );

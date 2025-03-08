@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import useCheckSession from "../../hooks/useCheckSession.jsx";
-import { validatedGetReq } from "../../helpers";
+import { validatedGetReq, validatedPostReq } from "../../helpers";
 
 import { UsersRound, CalendarFold } from "lucide-react";
 import FadeLoader from "react-spinners/FadeLoader";
 import styles from "./profile.module.css";
 
 import Posts from "../../components/Posts/Posts.jsx";
+import { useParams } from "react-router";
 
 export default function Profile() {
   const [user, setUser] = useState({
@@ -16,14 +17,17 @@ export default function Profile() {
   });
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [pfp, setPfp] = useState(null);
+
   useCheckSession();
 
-  const userUrl = `${import.meta.env.VITE_BACKEND_URL}/user/profile`;
-  // const userPostsUrl = `${import.meta.env.VITE_BACKEND_URL}/posts/${user.username}`;
-  const userPostsUrl = `${import.meta.env.VITE_BACKEND_URL}/posts/profile`;
-  const pfpUrl = `${import.meta.env.VITE_BACKEND_URL}/user/pfp`;
+  const params = useParams();
+
+  const userUrl = `${import.meta.env.VITE_BACKEND_URL}/user/profile/${params.username}`;
+  const userPostsUrl = `${import.meta.env.VITE_BACKEND_URL}/posts/user/${params.username}`;
+  const AddFriendUrl = `${import.meta.env.VITE_BACKEND_URL}/friend/add`;
+
   const dateJoined = new Date(user.user.dateJoined);
+  const loggedInUsername = localStorage.getItem("username");
 
   useEffect(() => {
     // User
@@ -31,18 +35,17 @@ export default function Profile() {
       .then((response) => response.json())
       .then((data) => setUser(data));
 
-    // User pfp
-    validatedGetReq(pfpUrl)
-      .then((response) => response.json())
-      .then((data) => setPfp(data.pfpUrl));
-
     // User Posts
     validatedGetReq(userPostsUrl)
       .then((response) => response.json())
       .then((data) => setPosts(data));
 
     setIsLoading(false);
-  }, [userUrl, pfpUrl, userPostsUrl]);
+  }, [userUrl, userPostsUrl]);
+
+  const handleFollowClick = () => {
+    validatedPostReq(AddFriendUrl, user.user.username);
+  };
 
   return (
     <>
@@ -58,7 +61,11 @@ export default function Profile() {
           ) : (
             <>
               <div className={styles["user-container-left"]}>
-                <img src={pfp} alt="" className={styles["user-profile-img"]} />
+                <img
+                  src={user.pfpUrl}
+                  alt=""
+                  className={styles["user-profile-img"]}
+                />
               </div>
               <div className={styles["user-container-right"]}>
                 <div className={styles["display-name"]}>
@@ -76,7 +83,12 @@ export default function Profile() {
                     {dateJoined.toLocaleDateString()}
                   </div>
                 </div>
-                <div className={styles["bio-container"]}>{user.bio}</div>
+                <div className={styles["bio-container"]}>
+                  {user.bio == undefined ? "No Bio set..." : user.bio}
+                </div>
+                {loggedInUsername != user.user.username && (
+                  <button onClick={handleFollowClick}>follow</button>
+                )}
               </div>
             </>
           )}

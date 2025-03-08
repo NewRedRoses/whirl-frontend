@@ -16,7 +16,7 @@ createRoot(document.getElementById("root")).render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/user/:username" element={<Profile />} />
         <Route path="/users" element={<Users />} />
         <Route path="/post/:postId" element={<ViewPost />} />
       </Routes>
