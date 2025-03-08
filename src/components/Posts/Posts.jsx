@@ -20,6 +20,7 @@ export default function Posts({ posts }) {
               author={{
                 displayName: post.user.profile.displayName,
                 pfpUrl: post.user.profile.pfpUrl,
+                username: post.user.username,
               }}
             />
           </li>

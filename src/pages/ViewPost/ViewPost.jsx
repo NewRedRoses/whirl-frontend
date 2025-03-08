@@ -66,6 +66,7 @@ export default function ViewPost() {
               author={{
                 displayName: post.user.profile.displayName,
                 pfpUrl: post.user.profile.pfpUrl,
+                username: post.user.username,
               }}
             />
             <h2>Comments</h2>

@@ -47,11 +47,17 @@ export default function Post({
     <div className={styles["post-container"]}>
       <div className={styles["post-header"]}>
         <div className={styles["post-header-left"]}>
-          <img src={author.pfpUrl} alt="" className={styles["post-userPfp"]} />
+          <Link to={`/user/${author.username}`}>
+            <img
+              src={author.pfpUrl}
+              alt=""
+              className={styles["post-userPfp"]}
+            />
+          </Link>
         </div>
         <div className={styles["post-header-mid"]}>
           <strong className={styles["post-author"]}>
-            {author.displayName}
+            <Link to={`/user/${author.username}`}>{author.displayName}</Link>
           </strong>
           <div className={styles["post-date"]}>
             <Link to={`/post/${postId}`}>{date} ago</Link>
