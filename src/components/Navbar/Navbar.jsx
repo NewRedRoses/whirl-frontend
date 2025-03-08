@@ -20,6 +20,7 @@ export default function Navbar() {
       .then((data) => {
         setPfp(data.pfpUrl);
         setUsername(data.user.username);
+        localStorage.setItem("username", data.user.username);
       });
   }, [userUrl]);
 
