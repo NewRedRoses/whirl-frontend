@@ -15,6 +15,11 @@ export default function Profile() {
       _count: {},
     },
   });
+  const [profileUserRelationshipToUser, setProfileUserRelationshipToUser] =
+    useState({
+      doesUserFollowLoggedUser: undefined,
+      doesLoggedUserFollowUser: undefined,
+    });
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -25,6 +30,8 @@ export default function Profile() {
   const userUrl = `${import.meta.env.VITE_BACKEND_URL}/user/profile/${params.username}`;
   const userPostsUrl = `${import.meta.env.VITE_BACKEND_URL}/posts/user/${params.username}`;
   const AddFriendUrl = `${import.meta.env.VITE_BACKEND_URL}/friend/add`;
+  const { doesUserFollowLoggedUser, doesLoggedUserFollowUser } =
+    profileUserRelationshipToUser;
 
   const dateJoined = new Date(user.user.dateJoined);
   const loggedInUsername = localStorage.getItem("username");
@@ -33,7 +40,13 @@ export default function Profile() {
     // User
     validatedGetReq(userUrl)
       .then((response) => response.json())
-      .then((data) => setUser(data));
+      .then((data) => {
+        setProfileUserRelationshipToUser({
+          doesLoggedUserFollowUser: data.doesLoggedUserFollowUser,
+          doesUserFollowLoggedUser: data.doesUserFollowLoggedUser,
+        });
+        setUser(data.profileData);
+      });
 
     // User Posts
     validatedGetReq(userPostsUrl)
@@ -60,6 +73,7 @@ export default function Profile() {
             </div>
           ) : (
             <>
+              {console.log(profileUserRelationshipToUser)}
               <div className={styles["user-container-left"]}>
                 <img
                   src={user.pfpUrl}
@@ -86,9 +100,24 @@ export default function Profile() {
                 <div className={styles["bio-container"]}>
                   {user.bio == undefined ? "No Bio set..." : user.bio}
                 </div>
-                {loggedInUsername != user.user.username && (
-                  <button onClick={handleFollowClick}>follow</button>
-                )}
+                <div className={[styles["follow-status"]]}>
+                  {loggedInUsername != user.user.username && (
+                    <>
+                      <button onClick={handleFollowClick}>
+                        {doesLoggedUserFollowUser ? (
+                          <div className={styles["following-btn"]}>
+                            Following
+                          </div>
+                        ) : (
+                          "Follow"
+                        )}
+                      </button>
+                      {doesUserFollowLoggedUser && (
+                        <div className={styles["follows-you"]}>Follows you</div>
+                      )}
+                    </>
+                  )}
+                </div>
               </div>
             </>
           )}
