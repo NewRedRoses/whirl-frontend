@@ -86,3 +86,6 @@ svg.date {
   padding: 2.5px 5px;
   border-radius: 5px;
 }
+.follow-status button:hover {
+  cursor: pointer;
+}
