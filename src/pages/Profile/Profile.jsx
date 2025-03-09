@@ -58,6 +58,7 @@ export default function Profile() {
 
   const handleFollowClick = () => {
     validatedPostReq(AddFriendUrl, user.user.username);
+    location.reload();
   };
 
   return (
