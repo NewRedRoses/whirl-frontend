@@ -32,14 +32,18 @@ export default function UserCard({
         </Link>
         <div className={styles["user-card-mid"]}>
           <div className={styles["top-details"]}>
-            <Link to={`/user/${username}`}>
+            <Link to={`/user/${username}`} className={styles["display-name"]}>
               <strong>{displayName}</strong>
             </Link>
           </div>
           <div className={styles["bottom-details"]}>
-            <span>{`@${username}`}</span>
-            <span>{`${followerCount} Followers`}</span>
-            <span>{`${followingCount} Following`}</span>
+            <div className={styles["username"]}>
+              <span>{`@${username}`}</span>
+            </div>
+            <div className={styles["follows-container"]}>
+              <span>{`${followerCount} Followers`}</span>
+              <span>{`${followingCount} Following`}</span>
+            </div>
           </div>
         </div>
       </div>

@@ -23,14 +23,15 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  gap: 5px;
+  gap: 1px;
 }
 .top-details {
   font-size: 1.3rem;
 }
 .bottom-details {
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  gap: 5px;
   color: var(--light-color-alt);
 }
 .user-card-right {
@@ -47,4 +48,11 @@
 .add-btn:hover {
   cursor: pointer;
   color: var(--light-color);
+}
+.display-name {
+  text-decoration: none;
+}
+.follows-container {
+  display: flex;
+  gap: 10px;
 }
