@@ -56,8 +56,8 @@ export default function Profile() {
     setIsLoading(false);
   }, [userUrl, userPostsUrl]);
 
-  const handleFollowClick = () => {
-    validatedPostReq(AddFriendUrl, user.user.username);
+  const handleFollowClick = async () => {
+    await validatedPostReq(AddFriendUrl, user.user.username);
     location.reload();
   };
 
