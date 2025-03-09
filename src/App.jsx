@@ -25,7 +25,10 @@ function App() {
 
   const handlePostChange = (e) => setPost(e.target.value);
 
-  const handlePostSubmit = (e) => validatedPostReq(postsUrl, post);
+  const handlePostSubmit = (e) => {
+    validatedPostReq(postsUrl, post);
+    location.reload();
+  };
   return (
     <div className="content">
       <Sidebar />
