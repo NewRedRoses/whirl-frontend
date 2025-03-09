@@ -7,6 +7,13 @@
   margin-right: 40px;
   border-radius: 10px;
 }
+.user-card-container {
+  display: flex;
+}
+.user-pfp-container {
+  display: flex;
+  align-items: center;
+}
 .user-pfp {
   display: inline-block;
   width: 60px;

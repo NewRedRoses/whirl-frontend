@@ -23,7 +23,7 @@ export default function UserCard({
   return (
     <div className={styles["user-card-container"]}>
       <div className={styles["user-card-left"]}>
-        <Link to={`/user/${username}`}>
+        <Link to={`/user/${username}`} className={styles["user-pfp-container"]}>
           {pfpUrl != undefined ? (
             <img src={pfpUrl} alt="" className={styles["user-pfp"]} />
           ) : (
