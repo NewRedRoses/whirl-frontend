@@ -11,10 +11,9 @@
   align-items: center;
   justify-content: center;
   margin-top: 10px;
-
-  gap: 20px;
-  padding-bottom: 20px;
-  border-bottom: 2px solid var(--dark-color-alt);
+  gap: 50px;
+  padding-bottom: 40px;
+  border-bottom: 2px dotted var(--dark-color-alt);
 }
 .user-container-left {
   display: flex;
@@ -26,7 +25,7 @@
   display: inline-block;
   width: 150px;
 
-  border: 2px solid var(--dark-color-alt);
+  border: 2px dotted var(--dark-color-alt);
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
