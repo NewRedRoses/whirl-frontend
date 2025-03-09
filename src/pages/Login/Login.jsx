@@ -1,5 +1,17 @@
+import { useNavigate } from "react-router";
 import styles from "./login.module.css";
+import { useEffect } from "react";
+import { validatedGetReq } from "../../helpers";
 export default function Login() {
+  const userUrl = `${import.meta.env.VITE_BACKEND_URL}/user/pfp`;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    validatedGetReq(userUrl).then((response) => {
+      if (response.status == 200) navigate("/");
+    });
+  }, []);
+
   return (
     <div className="content">
       <div className={styles["login-page"]}>
