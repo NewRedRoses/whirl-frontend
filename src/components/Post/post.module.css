@@ -19,7 +19,6 @@
   display: inline-block;
   width: 50px;
   height: 50px;
-  /*border: 0.5px solid black;*/
   border-radius: 50%;
   object-fit: cover;
 }
@@ -39,6 +38,9 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+}
+.post-date-content {
+  color: var(--light-color-alt);
 }
 .post-content {
   padding-top: 15px;
@@ -77,7 +79,6 @@
   font-size: 1rem;
 }
 .post-container a {
-  color: var(--light-color-alt);
   text-decoration: none;
 }
 .post-container a:hover {

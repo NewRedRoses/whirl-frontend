@@ -66,7 +66,12 @@ export default function Post({
             <Link to={`/user/${author.username}`}>{author.displayName}</Link>
           </strong>
           <div className={styles["post-date"]}>
-            <Link to={`/post/${postId}`}>{date} ago</Link>
+            <Link
+              to={`/post/${postId}`}
+              className={styles["post-date-content"]}
+            >
+              {date} ago
+            </Link>
           </div>
         </div>
         <div className={styles["post-header-right"]}>

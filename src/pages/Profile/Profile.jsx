@@ -74,7 +74,6 @@ export default function Profile() {
             </div>
           ) : (
             <>
-              {console.log(profileUserRelationshipToUser)}
               <div className={styles["user-container-left"]}>
                 {user.pfpUrl != undefined ? (
                   <img
