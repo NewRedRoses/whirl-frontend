@@ -1,5 +1,5 @@
 import styles from "./usercard.module.css";
-import { UserPlus } from "lucide-react";
+import { Shell } from "lucide-react";
 import { useState } from "react";
 import { validatedPostReq } from "../../helpers.js";
 import { Link } from "react-router";
@@ -24,7 +24,11 @@ export default function UserCard({
     <div className={styles["user-card-container"]}>
       <div className={styles["user-card-left"]}>
         <Link to={`/user/${username}`}>
-          <img src={pfpUrl} alt="" className={styles["user-pfp"]} />
+          {pfpUrl != undefined ? (
+            <img src={pfpUrl} alt="" className={styles["user-pfp"]} />
+          ) : (
+            <Shell className={styles["user-pfp"]} />
+          )}
         </Link>
         <div className={styles["user-card-mid"]}>
           <div className={styles["top-details"]}>

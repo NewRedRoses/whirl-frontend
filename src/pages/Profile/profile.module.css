@@ -21,7 +21,8 @@
   justify-content: center;
   align-items: center;
 }
-.user-profile-img {
+.user-profile-img,
+.user-profile-img-empty {
   display: inline-block;
   width: 150px;
 
@@ -29,6 +30,9 @@
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
+}
+.user-profile-img-empty {
+  border: 0;
 }
 .display-name h1 {
   margin: 0;

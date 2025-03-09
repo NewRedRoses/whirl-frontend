@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import useCheckSession from "../../hooks/useCheckSession.jsx";
 import { validatedGetReq, validatedPostReq } from "../../helpers";
 
-import { UsersRound, CalendarFold } from "lucide-react";
+import { UsersRound, CalendarFold, Shell } from "lucide-react";
 import FadeLoader from "react-spinners/FadeLoader";
 import styles from "./profile.module.css";
 
@@ -75,11 +75,15 @@ export default function Profile() {
             <>
               {console.log(profileUserRelationshipToUser)}
               <div className={styles["user-container-left"]}>
-                <img
-                  src={user.pfpUrl}
-                  alt=""
-                  className={styles["user-profile-img"]}
-                />
+                {user.pfpUrl != undefined ? (
+                  <img
+                    src={user.pfpUrl}
+                    alt=""
+                    className={styles["user-profile-img"]}
+                  />
+                ) : (
+                  <Shell className={styles["user-profile-img-empty"]} />
+                )}
               </div>
               <div className={styles["user-container-right"]}>
                 <div className={styles["display-name"]}>

@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import { EllipsisVertical, Heart, MessageSquare } from "lucide-react";
+import { EllipsisVertical, Heart, MessageSquare, Shell } from "lucide-react";
 
 import styles from "../Post/post.module.css";
 import { validatedGetReq, validatedPostReq } from "../../helpers";
 import { Link } from "react-router";
+
+// import whirrLogo from "../../assets/whirrlogo.jpg";
 
 export default function Post({
   postId,
@@ -48,11 +50,15 @@ export default function Post({
       <div className={styles["post-header"]}>
         <div className={styles["post-header-left"]}>
           <Link to={`/user/${author.username}`}>
-            <img
-              src={author.pfpUrl}
-              alt=""
-              className={styles["post-userPfp"]}
-            />
+            {author.pfpUrl != undefined ? (
+              <img
+                src={author.pfpUrl}
+                alt=""
+                className={styles["post-userPfp"]}
+              />
+            ) : (
+              <Shell className={styles["post-userPfp"]} />
+            )}
           </Link>
         </div>
         <div className={styles["post-header-mid"]}>
