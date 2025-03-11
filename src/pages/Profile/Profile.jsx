@@ -56,8 +56,8 @@ export default function Profile() {
     setIsLoading(false);
   }, [userUrl, userPostsUrl]);
 
-  const handleFollowClick = async () => {
-    await validatedPostReq(AddFriendUrl, user.user.username);
+  const handleFollowClick = () => {
+    validatedPostReq(AddFriendUrl, user.user.username);
     location.reload();
   };
 
@@ -78,6 +78,7 @@ export default function Profile() {
                 {user.pfpUrl != undefined ? (
                   <img
                     src={user.pfpUrl}
+                    referrerPolicy="no-referrer"
                     alt=""
                     className={styles["user-profile-img"]}
                   />

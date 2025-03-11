@@ -12,7 +12,7 @@ export default function Comment({ props }) {
   return (
     <div className={styles["comment-container"]}>
       <div className={styles["user-pfp"]}>
-        <img src={pfpUrl} alt="" />
+        <img referrerPolicy="no-referrer" src={pfpUrl} alt="" />
       </div>
       <div className={styles["right-content"]}>
         <div className={styles["user-display-name"]}>

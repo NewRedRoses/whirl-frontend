@@ -25,7 +25,12 @@ export default function UserCard({
       <div className={styles["user-card-left"]}>
         <Link to={`/user/${username}`} className={styles["user-pfp-container"]}>
           {pfpUrl != undefined ? (
-            <img src={pfpUrl} alt="" className={styles["user-pfp"]} />
+            <img
+              referrerPolicy="no-referrer"
+              src={pfpUrl}
+              alt=""
+              className={styles["user-pfp"]}
+            />
           ) : (
             <Shell className={styles["user-pfp"]} />
           )}
