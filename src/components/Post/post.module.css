@@ -6,6 +6,7 @@
   border-radius: 5px;
   max-width: 500px;
   padding: 20px;
+  white-space: pre-line;
 }
 .post-header {
   display: flex;
