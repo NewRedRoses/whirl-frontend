@@ -1,0 +1,18 @@
+.no-content-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+  padding: 25px;
+  gap: 10px;
+}
+.no-content-icon svg {
+  color: var(--light-color-alt);
+  width: 50px;
+  height: auto;
+}
+.no-content-caption {
+  font-size: 1.2rem;
+  color: var(--light-color-alt);
+}

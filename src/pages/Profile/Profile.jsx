@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router";
+
 import useCheckSession from "../../hooks/useCheckSession.jsx";
 import { validatedGetReq, validatedPostReq } from "../../helpers";
+import styles from "./profile.module.css";
 
 import { UsersRound, CalendarFold, Shell } from "lucide-react";
 import FadeLoader from "react-spinners/FadeLoader";
-import styles from "./profile.module.css";
 
 import Posts from "../../components/Posts/Posts.jsx";
-import { useParams } from "react-router";
+import NoContentMessage from "../../components/NoContentMessage/NoContentMessage.jsx";
 
 export default function Profile() {
   const [user, setUser] = useState({
@@ -127,9 +129,15 @@ export default function Profile() {
             </>
           )}
         </div>
-        <div className="user-posts-container">
-          <h1>Posts</h1>
-          <Posts posts={posts} />
+        <div className={styles["user-posts-container"]}>
+          {posts.length > 1 ? (
+            <>
+              <h1>Posts</h1>
+              <Posts posts={posts} />
+            </>
+          ) : (
+            <NoContentMessage caption="No posts yet…" />
+          )}
         </div>
       </div>
     </>
