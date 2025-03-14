@@ -2,25 +2,26 @@ import { useNavigate } from "react-router";
 import styles from "./login.module.css";
 import { useEffect } from "react";
 import { validatedGetReq } from "../../helpers";
+
 export default function Login() {
   const userUrl = `${import.meta.env.VITE_BACKEND_URL}/user/pfp`;
+  const guestLoginUrl = `${import.meta.env.VITE_BACKEND_URL}/auth/guest`;
+  const googleRedirectUrl = `${import.meta.env.VITE_BACKEND_URL}/auth/google`;
+
   const navigate = useNavigate();
 
   useEffect(() => {
     validatedGetReq(userUrl).then((response) => {
       if (response.status == 200) navigate("/");
     });
-  }, []);
+  }, [navigate]);
 
   return (
     <div className="content">
       <div className={styles["login-page"]}>
         <h1>Log In / Sign Up</h1>
         <div className={styles["login-options-container"]}>
-          <a
-            href="http://localhost:3000/api/auth/google"
-            className={styles["google-login-btn"]}
-          >
+          <a href={googleRedirectUrl} className={styles["google-login-btn"]}>
             <svg
               role="img"
               viewBox="0 0 24 24"
@@ -32,9 +33,11 @@ export default function Login() {
             Sign in with Google
           </a>
           <div className={styles["divider"]}></div>
-          <a href="" className={styles["guest-login-btn"]}>
-            Guest Access
-          </a>
+          <form action={guestLoginUrl} method="POST">
+            <input type="text" name="username" value="guest" />
+            <input type="password" name="password" value="guest" />
+            <button className={styles["guest-login-btn"]}>Guest Access</button>
+          </form>
         </div>
       </div>
     </div>

@@ -40,4 +40,14 @@
 }
 .guest-login-btn {
   border: 1px solid var(--dark-color-alt);
+  padding: 5px 10px;
+  font-size: 1.1rem;
+  border-radius: 5px;
+}
+.guest-login-btn:hover {
+  cursor: pointer;
+}
+/* bruh */
+.login-page input {
+  display: none;
 }
