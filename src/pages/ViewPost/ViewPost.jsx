@@ -6,6 +6,7 @@ import { formatDistance } from "date-fns";
 import useCheckSession from "../../hooks/useCheckSession.jsx";
 import Comment from "../../components/Comment/Comment.jsx";
 import CommentComposer from "../../components/CommentComposer/CommentComposer.jsx";
+import NoContentMessage from "../../components/NoContentMessage/NoContentMessage.jsx";
 
 import { validatedGetReq } from "../../helpers.js";
 
@@ -48,6 +49,18 @@ export default function ViewPost() {
     setIsLoading(false);
   }, [postUrl]);
 
+  const Comments = ({ comments }) => {
+    return (
+      <ul className="comments-list">
+        {comments.length > 0 &&
+          comments.map((comment, index) => (
+            <Comment key={index} props={comment} />
+          ))}
+        {}
+      </ul>
+    );
+  };
+
   return (
     <div className="content">
       <Sidebar />
@@ -71,14 +84,11 @@ export default function ViewPost() {
             />
             <h2>Comments</h2>
             <CommentComposer url={commentsUrl} />
-
-            <ul className="comments-list">
-              {comments.length > 0 &&
-                comments.map((comment, index) => (
-                  <Comment key={index} props={comment} />
-                ))}
-              {}
-            </ul>
+            {comments.length > 1 ? (
+              <Comments comments={comments} />
+            ) : (
+              <NoContentMessage caption="No comments..." />
+            )}
           </>
         )}
       </div>
