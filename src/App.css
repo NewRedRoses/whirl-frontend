@@ -3,7 +3,7 @@
   --dark-color-alt: #2f3a42;
   --light-color: #d2dae2;
   --light-color-alt: #808e9b;
-  font-family: Inter, sans-serif;
+  font-family: InterVariable, sans-serif;
   font-feature-settings:
     "liga" 1,
     "calt" 1; /* fix for Chrome */

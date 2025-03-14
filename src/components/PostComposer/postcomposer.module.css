@@ -9,16 +9,19 @@
 
 .post-composer {
   background-color: var(--light-color);
-  color: var(--dark-color);
+  color: var(--dark-color-alt);
+  font-family: InterVariable;
   resize: vertical;
-  min-height: 200px;
-  max-height: 500px;
+  min-height: 100px;
+  max-height: 400px;
   border-radius: 10px;
   border: 3px solid var(--light-color-alt);
   padding: 10px;
 }
 .post-composer::placeholder {
   color: var(--light-color-alt);
+  font-family: InterVariable;
+  font-style: italic;
 }
 .post-composer::-webkit-resizer {
   border-width: 8px;
@@ -33,10 +36,13 @@
 .submit-btn {
   border: 1px solid var(--light-color-alt);
   border-radius: 5px;
-  color: var(--dark-color-alt);
-  font-size: 1.1rem;
-  background-color: none;
+  font-size: 1.2rem;
+  color: var(--dark-color);
+  background-color: var(--light-color);
+  font-family: InterVariable;
 }
 .submit-btn:hover {
   cursor: pointer;
+  color: var(--light-color);
+  background-color: var(--dark-color);
 }

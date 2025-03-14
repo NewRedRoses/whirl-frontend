@@ -1,12 +1,17 @@
 import styles from "./postcomposer.module.css";
 
-export default function PostComposer({ post, onPostChange, onPostSubmit }) {
+export default function PostComposer({
+  post,
+  onPostChange,
+  onPostSubmit,
+  placeholder,
+}) {
   return (
     <>
       <div className={styles["post-composer-container"]}>
         <textarea
           name="post"
-          placeholder="What're you thinking about?"
+          placeholder={placeholder}
           id=""
           className={styles["post-composer"]}
           value={post}

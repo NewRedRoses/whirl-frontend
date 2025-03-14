@@ -35,9 +35,10 @@ function App() {
 
       <div className="main-content">
         <div>
-          <h1>Posts</h1>
+          <h1>Create a Post</h1>
           <PostComposer
             post={post}
+            placeholder="What've you been thinking about?"
             onPostChange={handlePostChange}
             onPostSubmit={handlePostSubmit}
           />
