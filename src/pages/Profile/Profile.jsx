@@ -130,7 +130,7 @@ export default function Profile() {
           )}
         </div>
         <div className={styles["user-posts-container"]}>
-          {posts.length > 1 ? (
+          {posts.length > 0 ? (
             <>
               <h1>Posts</h1>
               <Posts posts={posts} />

@@ -84,7 +84,7 @@ export default function ViewPost() {
             />
             <h2>Comments</h2>
             <CommentComposer url={commentsUrl} />
-            {comments.length > 1 ? (
+            {comments.length > 0 ? (
               <Comments comments={comments} />
             ) : (
               <NoContentMessage caption="No comments..." />
