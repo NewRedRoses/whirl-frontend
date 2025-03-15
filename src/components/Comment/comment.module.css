@@ -3,6 +3,7 @@
   border: 1px solid var(--dark-color-alt);
   padding: 20px;
   gap: 10px;
+  border-radius: 5px;
 }
 .user-pfp img {
   border: 1px solid var(--dark-color-alt);
