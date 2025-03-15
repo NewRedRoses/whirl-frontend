@@ -97,7 +97,8 @@ export default function Profile() {
                 <div className={styles["profile-details"]}>
                   <div className={styles.friends}>
                     <UsersRound />
-                    {user.user["_count"].friendOf}
+                    <div>{`${user.user["_count"].friendsB} Follower(s)`}</div>
+                    <div>{`${user.user["_count"].friendsA} Following`}</div>
                   </div>
                   <div className={styles.date}>
                     <CalendarFold />
