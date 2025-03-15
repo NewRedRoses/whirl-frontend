@@ -4,6 +4,7 @@ import useCheckSession from "./hooks/useCheckSession.jsx";
 import Sidebar from "./components/SideBar/Sidebar.jsx";
 import PostComposer from "./components/PostComposer/PostComposer.jsx";
 import Posts from "./components/Posts/Posts.jsx";
+import NoContentMessage from "./components/NoContentMessage/NoContentMessage.jsx";
 
 import { validatedGetReq, validatedPostReq } from "./helpers.js";
 
@@ -45,7 +46,11 @@ function App() {
         </div>
         <div>
           <h2>Recent Posts</h2>
-          <Posts posts={posts} />
+          {posts.length > 0 ? (
+            <Posts posts={posts} />
+          ) : (
+            <NoContentMessage caption="No Posts. Go follow some people!" />
+          )}
         </div>
       </div>
     </div>
