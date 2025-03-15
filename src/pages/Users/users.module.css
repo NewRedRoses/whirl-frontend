@@ -5,3 +5,8 @@
   list-style-type: none; /* Remove bullets */
   padding: 0;
 }
+@media (max-width: 540px) {
+  .list {
+    margin-left: 50px;
+  }
+}

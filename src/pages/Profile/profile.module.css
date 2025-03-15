@@ -110,3 +110,9 @@ svg.date {
 .follow-btn:hover {
   background-color: var(--light-color-alt);
 }
+@media (max-width: 540px) {
+  .user-container {
+    flex-direction: column;
+    gap: 25px;
+  }
+}

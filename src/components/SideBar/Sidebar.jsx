@@ -12,7 +12,7 @@ export default function Sidebar() {
   ];
   return (
     <div className="sidebar-content">
-      <ul className={styles.links}>
+      <ul className="sidebar-links">
         {list.map((link, index) => (
           <li key={index} className={styles["list-item"]}>
             <Link
