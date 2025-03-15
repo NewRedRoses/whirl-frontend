@@ -47,7 +47,7 @@ export default function ViewPost() {
       });
 
     setIsLoading(false);
-  }, [postUrl]);
+  }, [postUrl, commentsUrl]);
 
   const Comments = ({ comments }) => {
     return (

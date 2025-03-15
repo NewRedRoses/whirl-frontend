@@ -111,17 +111,20 @@ export default function Profile() {
                 <div className={[styles["follow-status"]]}>
                   {loggedInUsername != user.user.username && (
                     <>
-                      <button onClick={handleFollowClick}>
-                        {doesLoggedUserFollowUser ? (
-                          <div className={styles["following-btn"]}>
-                            Following
-                          </div>
-                        ) : (
-                          "Follow"
-                        )}
-                      </button>
-                      {doesUserFollowLoggedUser && (
-                        <div className={styles["follows-you"]}>Follows you</div>
+                      {doesLoggedUserFollowUser ? (
+                        <button
+                          onClick={handleFollowClick}
+                          className={styles["following-btn"]}
+                        >
+                          Following
+                        </button>
+                      ) : (
+                        <button
+                          onClick={handleFollowClick}
+                          className={styles["follow-btn"]}
+                        >
+                          Follow
+                        </button>
                       )}
                     </>
                   )}

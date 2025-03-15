@@ -45,7 +45,7 @@ function App() {
           />
         </div>
         <div>
-          <h2>Recent Posts</h2>
+          <h2>Recent posts from followed users</h2>
           {posts.length > 0 ? (
             <Posts posts={posts} />
           ) : (
