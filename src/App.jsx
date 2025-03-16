@@ -27,8 +27,12 @@ function App() {
   const handlePostChange = (e) => setPost(e.target.value);
 
   const handlePostSubmit = (e) => {
-    validatedPostReq(postsUrl, post);
-    location.reload();
+    validatedPostReq(postsUrl, post)
+      .then((response) => response.json())
+      .then((data) => {
+        setPosts([data, ...posts]);
+        setPost("");
+      });
   };
   return (
     <div className="content">
