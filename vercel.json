@@ -5,11 +5,21 @@
       "destination": "https://api.whirl.social/api/:path*"
     }
   ],
+  "redirects": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://api.whirl.social/api/:path*",
+      "statusCode": 307
+    }
+  ],
   "headers": [
     {
       "source": "/api/:path*",
       "headers": [
-        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "https://whirl.social"
+        },
         {
           "key": "Access-Control-Allow-Methods",
           "value": "GET,HEAD,PUT,PATCH,POST,DELETE"
@@ -19,6 +29,12 @@
           "value": "Content-Type,Authorization"
         }
       ]
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
