@@ -89,3 +89,8 @@
 .post-container a:hover {
   color: var(--light-color);
 }
+@media (max-width: 540px) {
+  .post-content {
+    font-size: 1.3em;
+  }
+}
