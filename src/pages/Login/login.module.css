@@ -51,3 +51,7 @@
 .login-page input {
   display: none;
 }
+.google-logo {
+  filter: invert(91%) sepia(9%) saturate(217%) hue-rotate(169deg)
+    brightness(97%) contrast(88%);
+}

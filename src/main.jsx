@@ -8,6 +8,7 @@ import Profile from "./pages/Profile/Profile.jsx";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import Users from "./pages/Users/Users.jsx";
 import ViewPost from "./pages/ViewPost/ViewPost.jsx";
+import NotFound from "./pages/NotFound/NotFound.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -19,7 +20,8 @@ createRoot(document.getElementById("root")).render(
         <Route path="/user/:username" element={<Profile />} />
         <Route path="/users" element={<Users />} />
         <Route path="/post/:postId" element={<ViewPost />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
-  </StrictMode>,
+  </StrictMode>
 );
