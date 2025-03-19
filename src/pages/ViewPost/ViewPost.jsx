@@ -10,6 +10,7 @@ import NoContentMessage from "../../components/NoContentMessage/NoContentMessage
 import FadeLoader from "react-spinners/FadeLoader";
 
 import { validatedGetReq } from "../../helpers.js";
+import NotFound from "../NotFound/NotFound.jsx";
 
 const samplePost = {
   datePosted: new Date(),
@@ -71,7 +72,6 @@ export default function ViewPost() {
     <div className="content">
       <Sidebar />
       <div className="main-content">
-        <h1>Post Details</h1>
         <div className="post-container"></div>
         {isUserLoading ? (
           <div className="spinner-container">
@@ -79,38 +79,44 @@ export default function ViewPost() {
           </div>
         ) : (
           <>
-            <Post
-              postId={post.id}
-              content={post.content}
-              likesCount={post["_count"].postLike}
-              date={formatDistance(post.datePosted, new Date())}
-              commentsCount={post["_count"].postComment}
-              author={{
-                displayName: post.user.profile.displayName,
-                pfpUrl: post.user.profile.pfpUrl,
-                username: post.user.username,
-              }}
-            />
+            {post.error ? (
+              <NotFound />
+            ) : (
+              <Post
+                postId={post.id}
+                content={post.content}
+                likesCount={post["_count"].postLike}
+                date={formatDistance(post.datePosted, new Date())}
+                commentsCount={post["_count"].postComment}
+                author={{
+                  displayName: post.user.profile.displayName,
+                  pfpUrl: post.user.profile.pfpUrl,
+                  username: post.user.username,
+                }}
+              />
+            )}
           </>
         )}
-        <div className="comments-container">
-          <h2>Comments</h2>
-          <CommentComposer url={commentsUrl} />
+        {post.error == undefined && (
+          <div className="comments-container">
+            <h2>Comments</h2>
+            <CommentComposer url={commentsUrl} />
 
-          {isCommentsLoading ? (
-            <div className="spinner-container">
-              <FadeLoader color="#808E9B" />
-            </div>
-          ) : (
-            <>
-              {comments.length > 0 ? (
-                <Comments comments={comments} />
-              ) : (
-                <NoContentMessage caption="No comments..." />
-              )}
-            </>
-          )}
-        </div>
+            {isCommentsLoading ? (
+              <div className="spinner-container">
+                <FadeLoader color="#808E9B" />
+              </div>
+            ) : (
+              <>
+                {comments.length > 0 ? (
+                  <Comments comments={comments} />
+                ) : (
+                  <NoContentMessage caption="No comments..." />
+                )}
+              </>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

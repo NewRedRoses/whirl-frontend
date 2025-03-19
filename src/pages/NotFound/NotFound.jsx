@@ -5,7 +5,7 @@ export default function NotFound() {
     <div className={styles.container}>
       <h1 className={styles.header}>404 Error</h1>
       <p className={styles.paragraph}>
-        The ... you&apos;re looking for does not exist.{" "}
+        What you&apos;re looking for does not exist.{" "}
       </p>
       <div className={styles.question}>Did it ever ?</div>
       <Link to={"/"} className={styles.return}>
