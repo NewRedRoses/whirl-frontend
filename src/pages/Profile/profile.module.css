@@ -115,4 +115,13 @@ svg.date {
     flex-direction: column;
     gap: 25px;
   }
+  .user-profile-img-empty,
+  .user-profile-img {
+    height: 100px;
+    width: 100px;
+  }
+  .user-posts-container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }

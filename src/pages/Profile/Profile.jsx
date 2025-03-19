@@ -23,14 +23,19 @@ export default function Profile() {
       doesLoggedUserFollowUser: undefined,
     });
   const [posts, setPosts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [userIsLoading, setUserIsLoading] = useState(true);
+  const [postsAreLoading, setPostsAreLoading] = useState(true);
 
   useCheckSession();
 
   const params = useParams();
 
-  const userUrl = `${import.meta.env.VITE_BACKEND_URL}/user/profile/${params.username}`;
-  const userPostsUrl = `${import.meta.env.VITE_BACKEND_URL}/posts/user/${params.username}`;
+  const userUrl = `${import.meta.env.VITE_BACKEND_URL}/user/profile/${
+    params.username
+  }`;
+  const userPostsUrl = `${import.meta.env.VITE_BACKEND_URL}/posts/user/${
+    params.username
+  }`;
   const AddFriendUrl = `${import.meta.env.VITE_BACKEND_URL}/friend/add`;
   const { doesUserFollowLoggedUser, doesLoggedUserFollowUser } =
     profileUserRelationshipToUser;
@@ -48,14 +53,17 @@ export default function Profile() {
           doesUserFollowLoggedUser: data.doesUserFollowLoggedUser,
         });
         setUser(data.profileData);
+        setUserIsLoading(false);
       });
 
     // User Posts
     validatedGetReq(userPostsUrl)
       .then((response) => response.json())
-      .then((data) => setPosts(data));
-
-    setIsLoading(false);
+      .then((data) => {
+        console.log(data);
+        setPosts(data);
+        setPostsAreLoading(false);
+      });
   }, [userUrl, userPostsUrl]);
 
   const handleFollowClick = () => {
@@ -67,7 +75,7 @@ export default function Profile() {
     <>
       <div className={styles["profile-content"]}>
         <div className={styles["user-container"]}>
-          {isLoading ? (
+          {userIsLoading ? (
             <div className={styles["animation-container"]}>
               <FadeLoader
                 color="#808E9B"
@@ -134,13 +142,21 @@ export default function Profile() {
           )}
         </div>
         <div className={styles["user-posts-container"]}>
-          {posts.length > 0 ? (
-            <>
-              <h1>Posts</h1>
-              <Posts posts={posts} />
-            </>
+          <h1>Posts</h1>
+          {postsAreLoading ? (
+            <div className="spinner-container">
+              <FadeLoader color="#808E9B" />
+            </div>
           ) : (
-            <NoContentMessage caption="No posts yet…" />
+            <>
+              {posts.length > 0 ? (
+                <>
+                  <Posts posts={posts} />
+                </>
+              ) : (
+                <NoContentMessage caption="No posts yet…" />
+              )}
+            </>
           )}
         </div>
       </div>

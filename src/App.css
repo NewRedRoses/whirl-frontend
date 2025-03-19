@@ -4,9 +4,7 @@
   --light-color: #d2dae2;
   --light-color-alt: #808e9b;
   font-family: InterVariable, sans-serif;
-  font-feature-settings:
-    "liga" 1,
-    "calt" 1; /* fix for Chrome */
+  font-feature-settings: "liga" 1, "calt" 1; /* fix for Chrome */
 }
 @supports (font-variation-settings: normal) {
   :root {
@@ -94,6 +92,11 @@ textarea {
   list-style-type: none;
   padding: 0;
 }
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
 @media (max-width: 540px) {
   .sidebar-content {
     display: flex;
@@ -102,6 +105,8 @@ textarea {
   }
   .content {
     flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   .sidebar-links {
     flex-direction: row;

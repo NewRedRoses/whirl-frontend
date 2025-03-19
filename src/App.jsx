@@ -5,6 +5,7 @@ import Sidebar from "./components/SideBar/Sidebar.jsx";
 import PostComposer from "./components/PostComposer/PostComposer.jsx";
 import Posts from "./components/Posts/Posts.jsx";
 import NoContentMessage from "./components/NoContentMessage/NoContentMessage.jsx";
+import FadeLoader from "react-spinners/FadeLoader";
 
 import { validatedGetReq, validatedPostReq } from "./helpers.js";
 
@@ -13,6 +14,7 @@ import "./App.css";
 function App() {
   const [post, setPost] = useState("");
   const [posts, setPosts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   useCheckSession();
 
   const postsUrl = `${import.meta.env.VITE_BACKEND_URL}/posts`;
@@ -21,8 +23,11 @@ function App() {
     // Fetch posts
     validatedGetReq(postsUrl)
       .then((response) => response.json())
-      .then((data) => setPosts(data));
-  }, [postsUrl]);
+      .then((data) => {
+        setPosts(data);
+        setIsLoading(false);
+      });
+  }, [postsUrl, isLoading]);
 
   const handlePostChange = (e) => setPost(e.target.value);
 
@@ -34,6 +39,7 @@ function App() {
         setPost("");
       });
   };
+
   return (
     <div className="content">
       <Sidebar />
@@ -50,10 +56,18 @@ function App() {
         </div>
         <div>
           <h2>Recent posts from followed users</h2>
-          {posts.length > 0 ? (
-            <Posts posts={posts} />
+          {isLoading ? (
+            <div className="spinner-container">
+              <FadeLoader color="#808E9B" />
+            </div>
           ) : (
-            <NoContentMessage caption="No Posts. Go follow some people!" />
+            <>
+              {posts.length > 0 ? (
+                <Posts posts={posts} />
+              ) : (
+                <NoContentMessage caption="No Posts. Go follow some people!" />
+              )}
+            </>
           )}
         </div>
       </div>

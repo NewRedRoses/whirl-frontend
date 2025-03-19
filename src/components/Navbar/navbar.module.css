@@ -34,3 +34,9 @@
 .logout-btn:active {
   top: 1px;
 }
+@media (max-width: 540px) {
+  .navbar-pfp {
+    height: 40px;
+    width: 40px;
+  }
+}
