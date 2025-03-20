@@ -12,34 +12,25 @@ export default function Post({
   author,
   content,
   date,
+  isPostLiked,
   likesCount = 0,
   commentsCount = 0,
 }) {
-  const [isPostLiked, setIsPostLiked] = useState(false);
+  const [like, setLike] = useState(isPostLiked);
   const [likesCounter, setLikesCounter] = useState(likesCount);
 
-  const postLikeUrl = `${import.meta.env.VITE_BACKEND_URL}/post/id/${postId}/like`;
-
-  useEffect(() => {
-    // Get from backend whether user has liked post
-    validatedGetReq(postLikeUrl)
-      .then((response) => response.json())
-      .then((postLikeStatus) => {
-        if (postLikeStatus.success) {
-          setIsPostLiked(true);
-        }
-      });
-    setLikesCounter(likesCount);
-  }, [postLikeUrl, likesCount]);
+  const postLikeUrl = `${
+    import.meta.env.VITE_BACKEND_URL
+  }/post/id/${postId}/like`;
 
   async function handleLike() {
-    if (isPostLiked) {
+    if (like) {
       if (likesCounter > 0) {
         setLikesCounter(likesCounter - 1);
       }
-      setIsPostLiked(false);
+      setLike(false);
     } else {
-      setIsPostLiked(true);
+      setLike(true);
       setLikesCounter(likesCounter + 1);
     }
     validatedPostReq(postLikeUrl);
@@ -84,9 +75,9 @@ export default function Post({
       <div className={styles["post-btns"]}>
         <button onClick={handleLike}>
           <div className={styles["liked-post-container"]}>
-            {isPostLiked ? <Heart color="#ef5777" /> : <Heart />}
+            {like ? <Heart color="#ef5777" /> : <Heart />}
             {likesCounter}
-          </div>{" "}
+          </div>
         </button>
         <Link to={`/post/${postId}`}>
           <button>
