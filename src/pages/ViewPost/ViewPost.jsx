@@ -87,6 +87,7 @@ export default function ViewPost() {
                 content={post.content}
                 likesCount={post["_count"].postLike}
                 date={formatDistance(post.datePosted, new Date())}
+                isPostLiked={post.hasLiked}
                 commentsCount={post["_count"].postComment}
                 author={{
                   displayName: post.user.profile.displayName,
