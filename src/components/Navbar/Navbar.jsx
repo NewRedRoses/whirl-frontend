@@ -22,7 +22,7 @@ export default function Navbar() {
         setUsername(data.user.username);
         localStorage.setItem("username", data.user.username);
       });
-  }, [userUrl]);
+  }, []);
 
   const handleLogout = () => {
     validatedPostReq(logoutUrl);
