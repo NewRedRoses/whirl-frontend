@@ -148,6 +148,11 @@ export default function Profile() {
                               Follow
                             </button>
                           )}
+                          {doesUserFollowLoggedUser && (
+                            <div className={styles["follows-you"]}>
+                              Follows You
+                            </div>
+                          )}
                         </>
                       )}
                     </div>
