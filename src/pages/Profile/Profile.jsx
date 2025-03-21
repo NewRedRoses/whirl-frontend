@@ -28,6 +28,7 @@ export default function Profile() {
   const [userIsLoading, setUserIsLoading] = useState(true);
   const [dateJoined, setDateJoined] = useState(new Date());
   const [postsAreLoading, setPostsAreLoading] = useState(true);
+  const [followText, setFollowText] = useState("Follow");
 
   useCheckSession();
 
@@ -60,6 +61,10 @@ export default function Profile() {
         } else {
           setUser(data);
         }
+        const currentFollowStatus = data.doesLoggedUserFollowUser
+          ? "Following"
+          : "Follow";
+        setFollowText(currentFollowStatus);
         const dateJoined = data.profileData.dateJoined;
         setDateJoined(new Date(dateJoined));
         setUserIsLoading(false);
@@ -75,8 +80,12 @@ export default function Profile() {
   }, [userPostsUrl]);
 
   const handleFollowClick = () => {
+    if (followText == "Follow") {
+      setFollowText("Following");
+    } else {
+      setFollowText("Follow");
+    }
     validatedPostReq(AddFriendUrl, user.user.username);
-    location.reload();
   };
 
   return (
@@ -133,21 +142,17 @@ export default function Profile() {
                     <div className={[styles["follow-status"]]}>
                       {loggedInUsername != user.user.username && (
                         <>
-                          {doesLoggedUserFollowUser ? (
-                            <button
-                              onClick={handleFollowClick}
-                              className={styles["following-btn"]}
-                            >
-                              Following
-                            </button>
-                          ) : (
-                            <button
-                              onClick={handleFollowClick}
-                              className={styles["follow-btn"]}
-                            >
-                              Follow
-                            </button>
-                          )}
+                          <button
+                            onClick={handleFollowClick}
+                            className={
+                              followText == "Following"
+                                ? `${styles["following-btn"]}`
+                                : `${styles["follow-btn"]}`
+                            }
+                          >
+                            {followText}
+                          </button>
+
                           {doesUserFollowLoggedUser && (
                             <div className={styles["follows-you"]}>
                               Follows You
