@@ -72,7 +72,7 @@ export default function Profile() {
         setPosts(data);
         setPostsAreLoading(false);
       });
-  }, [userUrl, userPostsUrl]);
+  }, [userPostsUrl]);
 
   const handleFollowClick = () => {
     validatedPostReq(AddFriendUrl, user.user.username);
