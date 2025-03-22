@@ -5,18 +5,6 @@
   margin-top: 20%;
   align-items: center;
 }
-.login-page a {
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.1em;
-  color: var(--light-color-alt);
-  width: fit-content;
-  border-radius: 5px;
-  padding: 10px;
-}
-.login-page a:hover {
-  color: var(--light-color);
-}
 .divider {
   width: 100%;
   margin: 10px;
@@ -33,19 +21,38 @@
   align-items: center;
   gap: 10px;
   border: 1px solid var(--dark-color-alt);
+  background-color: var(--dark-color);
+  color: var(--light-color);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1em;
+  color: var(--light-color);
+  width: fit-content;
+  border-radius: 5px;
+  padding: 10px;
 }
 .google-login-btn svg {
   width: 25px;
   color: blue;
 }
 .guest-login-btn {
+  display: flex;
   border: 1px solid var(--dark-color-alt);
+  background-color: var(--light-color);
   padding: 5px 10px;
   font-size: 1.1rem;
   border-radius: 5px;
+  width: 200px;
+  height: 40px;
+  border: 1px solid var(--dark-color-alt);
+  justify-content: center;
+  align-items: center;
 }
 .guest-login-btn:hover {
   cursor: pointer;
+  background-color: var(--dark-color);
+  color: var(--light-color);
+  border: 1px solid var(--dark-color-alt);
 }
 /* bruh */
 .login-page input {
