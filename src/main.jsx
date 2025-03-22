@@ -9,9 +9,11 @@ import Navbar from "./components/Navbar/Navbar.jsx";
 import Users from "./pages/Users/Users.jsx";
 import ViewPost from "./pages/ViewPost/ViewPost.jsx";
 import NotFound from "./pages/NotFound/NotFound.jsx";
+import { Analytics } from "@vercel/analytics/react";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
+    <Analytics />
     <BrowserRouter>
       <Navbar />
       <Routes>
@@ -23,5 +25,5 @@ createRoot(document.getElementById("root")).render(
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
-  </StrictMode>
+  </StrictMode>,
 );
