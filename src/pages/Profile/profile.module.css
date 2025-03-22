@@ -93,6 +93,7 @@ svg.date {
 .follow-btn {
   padding: 5px 10px;
   border-radius: 5px;
+  color: var(--dark-color);
 }
 .following-btn {
   color: var(--light-color-alt);
