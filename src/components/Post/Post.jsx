@@ -70,7 +70,9 @@ export default function Post({
         </div>
       </div>
       <div className={styles["post-body"]}>
-        <div className={styles["post-content"]}>{content}</div>
+        <div className={styles["post-content"]}>
+          <p>{content}</p>
+        </div>
       </div>
       <div className={styles["post-btns"]}>
         <button onClick={handleLike}>
