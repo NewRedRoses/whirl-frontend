@@ -97,6 +97,9 @@ textarea {
   justify-content: center;
   padding: 40px;
 }
+p {
+  margin: 10px 0;
+}
 @media (max-width: 540px) {
   .sidebar-content {
     display: flex;
@@ -111,5 +114,14 @@ textarea {
   .sidebar-links {
     flex-direction: row;
     margin-top: 0;
+  }
+  h1 {
+    font-size: 25px;
+  }
+  h2 {
+    font-size: 23px;
+  }
+  p {
+    margin: 5px 0;
   }
 }
