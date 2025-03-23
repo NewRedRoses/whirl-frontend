@@ -1,8 +1,7 @@
-# React + Vite
+# Whirl - frontend 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![](./public/whirl_home.png)
 
-Currently, two official plugins are available:
+If you would like to see this project deployed live, please check it out at [https://whirl.social](https://whirl.social)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Alternatively, if you would like to checkout the backend, you can checkout the [Github repo here](https://github.com/NewRedRoses/whirl-backend)
