@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import useCheckSession from "./hooks/useCheckSession.jsx";
 
 import Sidebar from "./components/SideBar/Sidebar.jsx";
 import PostComposer from "./components/PostComposer/PostComposer.jsx";
@@ -15,7 +14,6 @@ function App() {
   const [post, setPost] = useState("");
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  useCheckSession();
 
   const postsUrl = `${import.meta.env.VITE_BACKEND_URL}/posts`;
 
